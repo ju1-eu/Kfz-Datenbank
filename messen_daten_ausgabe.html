@@ -1,0 +1,1013 @@
+<!DOCTYPE html><html><head>
+      <title>messen_daten_ausgabe</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////Users/jan/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.6.10/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="datenbank-tool">Datenbank-Tool</h1>
+
+<ul>
+<li>DB_NAME: messen.db</li>
+<li>EXPORT_DATEINAME: messen_datenbank_sicherung.csv</li>
+<li>IMPORT_DATEINAME: messen_datenbank_sicherung.csv</li>
+<li>TEXTDATEI_PFAD: messuebung_eingabe.txt</li>
+<li>MD_AUSGABE_DATEI: messen_daten_ausgabe.md</li>
+</ul>
+<h2 class="mume-header" id="mess%C3%BCbung-und-kundenbeanstandung">Mess&#xFC;bung und Kundenbeanstandung</h2>
+
+<h3 class="mume-header" id="licht-vorne-geht-nicht-abblendlicht-vl-nio">Licht vorne geht nicht, Abblendlicht VL n.i.O.</h3>
+
+<ul>
+<li><strong>ID</strong>: 1</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;01</li>
+<li><strong>Fahrzeug</strong>: BMW Compact E46 (Dieselmotor), 2001, Motor-Nr.: 204D4</li>
+<li><strong>Problem</strong>: Licht vorne geht nicht, Abblendlicht VL n.i.O.</li>
+<li><strong>Fehlerspeicher</strong>:</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Plusleitung von linken Abblendlicht E104 Pin 2 nach SG A192 Pin 7</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Multimeter</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="r%C3%BCckfahrlicht-ohne-funktion-r%C3%BCckfahrlicht-links-nio">R&#xFC;ckfahrlicht ohne Funktion, R&#xFC;ckfahrlicht links n.i.O.</h3>
+
+<ul>
+<li><strong>ID</strong>: 2</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;01</li>
+<li><strong>Fahrzeug</strong>: Golf 6 1,4 l (Benzinmotor), 2012, Motor-Nr.: CAXA</li>
+<li><strong>Problem</strong>: R&#xFC;ckfahrlicht ohne Funktion, R&#xFC;ckfahrlicht links n.i.O.</li>
+<li><strong>Fehlerspeicher</strong>:</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Plusleitung von linken R&#xFC;ckfahrlicht M16 Pin 3 nach SG J519 Pin 28</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Multimeter</li>
+<li>Rechtslenker im Stromlaufplan beachten</li>
+<li>R&#xFC;ckw&#xE4;rtsgang ein/aus</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="beleuchtung-hinten-defekt-schlusslicht-re-leuchtet-schwach-nio">Beleuchtung hinten defekt, Schlusslicht re. leuchtet schwach, n.i.O.</h3>
+
+<ul>
+<li><strong>ID</strong>: 3</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;02</li>
+<li><strong>Fahrzeug</strong>: Golf 6 1,4 l (Benzinmotor), 2012, Motor-Nr.: CAXA</li>
+<li><strong>Problem</strong>: Beleuchtung hinten defekt, Schlusslicht re. leuchtet schwach, n.i.O.</li>
+<li><strong>Fehlerspeicher</strong>:</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand auf Plusleitung von rechten Schlusslicht M22 Pin 1 nach SG J519 Pin 26. Spannungsverlust von <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>15</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">1,15~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">15</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Brems- und Schlusslicht ist eine Einfaden-Gl&#xFC;hlampe</li>
+<li>PWM-Signal <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2192;</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">&#x2192;</span></span></span></span> Oszi messen</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="beleuchtung-vorne-geht-nicht-standlicht-links-nio">Beleuchtung vorne geht nicht, Standlicht links n.i.O.</h3>
+
+<ul>
+<li><strong>ID</strong>: 4</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;02</li>
+<li><strong>Fahrzeug</strong>: BMW Compact E46 (Dieselmotor), 2001, Motor-Nr.: 204D4</li>
+<li><strong>Problem</strong>: Beleuchtung vorne geht nicht, Standlicht links n.i.O.</li>
+<li><strong>Fehlerspeicher</strong>:</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Zuleitung von linken Standlicht E5 Pin 2 nach SG A192 Pin 45</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Multimeter</li>
+<li>Ersatzwert von SG (Blinklicht VL an normal) wenn Standlicht def.</li>
+<li>Bauteilpr&#xFC;fung oder Quertausch</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="kraftstoffverbrauch-zu-hoch">Kraftstoffverbrauch zu hoch</h3>
+
+<ul>
+<li><strong>ID</strong>: 5</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;03</li>
+<li><strong>Fahrzeug</strong>: VW Caddy 2,0 l (Dieselmotor), 2016, Motor-Nr.: DFSD</li>
+<li><strong>Problem</strong>: Kraftstoffverbrauch zu hoch</li>
+<li><strong>Fehlerspeicher</strong>: i.O.</li>
+<li><strong>Istwerte</strong>: K&#xFC;hlmitteltemperatur <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>5</mn><mo>&#x2218;</mo></msup><mtext>C</mtext></mrow><annotation encoding="application/x-tex">5^\circ\text{C}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord">5</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">&#x2218;</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord">C</span></span></span></span></span></li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand auf Signalleitung von K&#xFC;hlmitteltemperaturgeber G62 Pin 1 nach SG J623 Pin 38. Spannungsverlust von <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo separator="true">,</mo><mn>8</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">2,8~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">8</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Multimeter</li>
+<li>NTC K&#xFC;hlmitteltemperaturgeber</li>
+<li>(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">U_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> SG) Istwert = Sollwert (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">U_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> Sensor)</li>
+<li>Referenzspannung am SG messen Strecker trennen</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="kraftstoffverbrauch-zu-hoch-1">Kraftstoffverbrauch zu hoch</h3>
+
+<ul>
+<li><strong>ID</strong>: 6</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;04</li>
+<li><strong>Fahrzeug</strong>: BMW Compact E46 (Dieselmotor), 2001, Motor-Nr.: 204D4</li>
+<li><strong>Problem</strong>: Kraftstoffverbrauch zu hoch</li>
+<li><strong>Fehlerspeicher</strong>: i.O.</li>
+<li><strong>Istwerte</strong>: Ansauglufttemperatur <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2212;</mo><mn>4</mn><msup><mn>0</mn><mo>&#x2218;</mo></msup><mtext>C</mtext></mrow><annotation encoding="application/x-tex">-40^\circ\text{C}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord">&#x2212;</span><span class="mord">4</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">&#x2218;</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord">C</span></span></span></span></span></li>
+<li><strong>Ursache</strong>: Unterbrechung auf Signalleitung von Ansauglufttemperatursensor B6217 Pin 1 nach SG A2249 Pin 57. Referenzspannung ist mit Messung 1 als i.O. zu bewerten.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Multimeter</li>
+<li>NTC - Ansauglufttemperatursensor</li>
+<li>(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">U_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> SG) Istwert = Sollwert (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">U_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> Sensor)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="kraftstoffverbrauch-zu-hoch-2">Kraftstoffverbrauch zu hoch</h3>
+
+<ul>
+<li><strong>ID</strong>: 7</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;04</li>
+<li><strong>Fahrzeug</strong>: BMW 344 E36, 1997, Motor-Nr.: 164E2</li>
+<li><strong>Problem</strong>: Kraftstoffverbrauch zu hoch</li>
+<li><strong>Fehlerspeicher</strong>: i.O.</li>
+<li><strong>Istwerte</strong>: Ansauglufttemperatur <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>1</mn><mo>&#x2218;</mo></msup><mtext>C</mtext></mrow><annotation encoding="application/x-tex">1^\circ\text{C}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord">1</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">&#x2218;</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord">C</span></span></span></span></span></li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand auf Signalleitung von Ansauglufttemperatursensor B6233 Pin 4 nach SG A6000 Pin 77. Spannungsverlust von <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>9</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">1,9~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">9</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Multimeter</li>
+<li>NTC Ansauglufttemperatursensor</li>
+<li>(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">U_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> SG) Istwert = Sollwert (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">U_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> Sensor)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="nimmt-schlecht-gas-an">Nimmt schlecht Gas an</h3>
+
+<ul>
+<li><strong>ID</strong>: 8</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;05</li>
+<li><strong>Fahrzeug</strong>: VW Caddy 2,0 l (Dieselmotor), 2016, Motor-Nr.: DFSD</li>
+<li><strong>Problem</strong>: Nimmt schlecht Gas an</li>
+<li><strong>Fehlerspeicher</strong>: n.i.O.</li>
+<li><strong>Istwerte</strong>: Fahrpedalsensor1 0,0 mV, Fahrpedalsensor2 i.O.</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Signalleitung von Fahrpedalsensor 1 G79 Pin 4 nach SG J623 Pin 77</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Poti Fahrpedalsensor</li>
+<li>Durchgangspr&#xFC;fung und Masseschlusspr&#xFC;fung Signalleitung</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="bockt-beim-gas-geben">Bockt beim Gas geben</h3>
+
+<ul>
+<li><strong>ID</strong>: 9</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;06</li>
+<li><strong>Fahrzeug</strong>: BMW 344 E36, 1997, Motor-Nr.: 164E2</li>
+<li><strong>Problem</strong>: Bockt beim Gas geben</li>
+<li><strong>Fehlerspeicher</strong>: i.O.</li>
+<li><strong>Istwerte</strong>: Drosselklappenpositionssensor 2,08 bis 2,98 V</li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand auf Plusleitung von Drosselklappenpositionssensor R6252 Pin 1 nach SG A6000 Pin 59. &#xDC;bergangswiderstand Masseleitung von Drosselklappenpositionssensor R6252 Pin 3 nach Masse-Verteiler X8005 Pin 5. Spannungsverlust gesamt <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">4~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">4</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Poti Drosselklappenpositionssensor</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="schlechte-gasannahme">Schlechte Gasannahme</h3>
+
+<ul>
+<li><strong>ID</strong>: 10</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;06</li>
+<li><strong>Fahrzeug</strong>: Golf 6 1,4 l (Benzinmotor), 2012, Motor-Nr.: CAXA</li>
+<li><strong>Problem</strong>: Schlechte Gasannahme</li>
+<li><strong>Fehlerspeicher</strong>: Fahrpedalsensor 1 und 2 - Signal zu niedrig</li>
+<li><strong>Istwerte</strong>: Sensor D 0 %</li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand auf Plusleitung von Gaspedalstellungsgeber G79 Pin 2 nach SG J623. Spannungsverlust von <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo separator="true">,</mo><mn>4</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">2,4~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Cipos Fahrpedalsensor</li>
+<li>Cipos (Hella ber&#xFC;hrungslos arbeitet nur wenn volle Versorgungsspannung anliegt)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="motor-springt-verz%C3%B6gert-an">Motor springt verz&#xF6;gert an</h3>
+
+<ul>
+<li><strong>ID</strong>: 11</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;07</li>
+<li><strong>Fahrzeug</strong>: VW Caddy 2,0 l (Dieselmotor), 2016, Motor-Nr.: DFSD</li>
+<li><strong>Problem</strong>: Motor springt verz&#xF6;gert an</li>
+<li><strong>Fehlerspeicher</strong>: Nockenwellensensor</li>
+<li><strong>Istwerte</strong>: Nockenwellendrehzahl <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mtext>&#xA0;</mtext><mi>m</mi><mi>i</mi><msup><mi>n</mi><mrow><mo>&#x2212;</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">0~min^{-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">0</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal">mi</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2212;</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></li>
+<li><strong>Ursache</strong>: Unterbrechung auf Signalleitung von Nockenwellengeber G40 Pin 2 nach SG J623 Pin 59.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Hallgeber Nockenwellensensor</li>
+<li>Gutbild Hallgeber Sollwert: Rechtecksignal (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>5</mn><mi mathvariant="normal">/</mi><mn>12</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">+5/12~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">+</span><span class="mord">5/12</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>)</li>
+<li>PWM + Diodenpr&#xFC;flampe || bei Signalleitungsbruch</li>
+<li>Referenz auf Oszi-Signalbild (Sollwert)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="motor-springt-gar-nicht-an">Motor springt gar nicht an</h3>
+
+<ul>
+<li><strong>ID</strong>: 12</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;07</li>
+<li><strong>Fahrzeug</strong>: BMW Compact E46 (Dieselmotor), 2001, Motor-Nr.: 204D4</li>
+<li><strong>Problem</strong>: Motor springt gar nicht an</li>
+<li><strong>Fehlerspeicher</strong>: Nockenwellensensor</li>
+<li><strong>Istwerte</strong>: Nockenwellendrehzahl <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mtext>&#xA0;</mtext><mi>m</mi><mi>i</mi><msup><mi>n</mi><mrow><mo>&#x2212;</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">0~min^{-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">0</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal">mi</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2212;</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></li>
+<li><strong>Ursache</strong>: Unterbrechung auf Signalleitung von Nockenwellengeber B6219 Pin 2 nach SG A2249 Pin 62. Plusschlusspr&#xFC;fung steuerger&#xE4;teseitig nicht durchf&#xFC;hrbar, da Stecker nicht trennbar.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Hallgeber Nockenwellensensor</li>
+<li>Gutbild Hallgeber Sollwert: Rechtecksignal (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>5</mn><mi mathvariant="normal">/</mi><mn>12</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">+5/12~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">+</span><span class="mord">5/12</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="springt-verz%C3%B6gert-an-und-l%C3%BCfter-l%C3%A4uft-die-ganze-zeit">Springt verz&#xF6;gert an und L&#xFC;fter l&#xE4;uft die ganze Zeit</h3>
+
+<ul>
+<li><strong>ID</strong>: 13</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;08</li>
+<li><strong>Fahrzeug</strong>: VW Caddy 2,0 l (Dieselmotor), 2016, Motor-Nr.: DFSD</li>
+<li><strong>Problem</strong>: Springt verz&#xF6;gert an und L&#xFC;fter l&#xE4;uft die ganze Zeit</li>
+<li><strong>Fehlerspeicher</strong>: Abgastemperaturgeber 3 - Kurzschluss nach Masse</li>
+<li><strong>Istwerte</strong>: Abgastemperaturgeber 3 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>90</mn><msup><mn>0</mn><mo>&#x2218;</mo></msup><mtext>C</mtext></mrow><annotation encoding="application/x-tex">900^\circ\text{C}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">90</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">&#x2218;</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord">C</span></span></span></span></span></li>
+<li><strong>Ursache</strong>: Masseschluss auf Signalleitung von SG J623 Stecker T94 Pin 32 nach Abgastemperaturgeber G495.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Multimeter</li>
+<li>PTC Abgastemperaturgeber</li>
+<li>Am Ziel anfangen mit messen</li>
+<li>Bosch-Info / Handb&#xFC;cher / Fahrzeug Widerstandswerte</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="springt-extrem-schlecht-an">Springt extrem schlecht an</h3>
+
+<ul>
+<li><strong>ID</strong>: 14</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;08</li>
+<li><strong>Fahrzeug</strong>: Golf 6 1,4 l (Benzinmotor), 2012, Motor-Nr.: CAXA</li>
+<li><strong>Problem</strong>: Springt extrem schlecht an</li>
+<li><strong>Fehlerspeicher</strong>: Nockenwellensensor A - Signal zu hoch</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand auf Masseleitung von SG J623 Stecker T60 Pin 54 nach Nockenwellensensor G40 Stecker T3d Pin 3. Spannungsverlust von <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo separator="true">,</mo><mn>9</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">2,9~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">9</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Hallgeber Nockenwellensensor</li>
+<li>Referenzspannung (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>U</mtext><mtext>Ref</mtext></msub></mrow><annotation encoding="application/x-tex">\text{U}_\text{Ref}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord text"><span class="mord">U</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord text mtight"><span class="mord mtight">Ref</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>) am SG messen bei &#xDC;bergangswiderstand (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>R</mtext><mover accent="true"><mtext>u</mtext><mo>&#xA8;</mo></mover></msub></mrow><annotation encoding="application/x-tex">\text{R}_\text{&#xFC;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord text"><span class="mord">R</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord text mtight"><span class="mord accent mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord mtight">u</span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord mtight">&#xA8;</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>). (Stecker trennen)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="nimmt-kein-gas-an">Nimmt kein Gas an</h3>
+
+<ul>
+<li><strong>ID</strong>: 15</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;09</li>
+<li><strong>Fahrzeug</strong>: Golf 6 1,4 l (Benzinmotor), 2012, Motor-Nr.: CAXA</li>
+<li><strong>Problem</strong>: Nimmt kein Gas an</li>
+<li><strong>Fehlerspeicher</strong>: Drosselklappenpoti - Signal zu hoch, Drosselklappenpoti 2 - Signal zu hoch</li>
+<li><strong>Istwerte</strong>: Drosselklappenpoti 98 %, Drosselklappenpoti 2 98 %</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Masseleitung von SG J623 Stecker T60 Pin 44 nach Drosselklappensteuereinheit Stecker T6x Pin 6</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Multimeter</li>
+<li>Poti Drosselklappenpoti</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="motor-springt-nicht-an">Motor springt nicht an</h3>
+
+<ul>
+<li><strong>ID</strong>: 16</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;09</li>
+<li><strong>Fahrzeug</strong>: BMW Compact E46 (Dieselmotor), 2001, Motor-Nr.: 204D4</li>
+<li><strong>Problem</strong>: Motor springt nicht an</li>
+<li><strong>Fehlerspeicher</strong>: Nockenwellensensor - Signal fehlerhaft</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: Leitungsunterbrechung Plusversorgung von Sicherung F1 A8682 Stecker X8582 nach Nockenwellensensor B6219 Stecker X6219 Pin 1</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Hallgeber Nockenwellensensor</li>
+<li>PWM</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="mil-an-hoher-kraftstoffverbrauch">MIL an, hoher Kraftstoffverbrauch</h3>
+
+<ul>
+<li><strong>ID</strong>: 17</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;09</li>
+<li><strong>Fahrzeug</strong>: VW Caddy 2,0 l (Dieselmotor), 2016, Motor-Nr.: DFSD</li>
+<li><strong>Problem</strong>: MIL an, hoher Kraftstoffverbrauch</li>
+<li><strong>Fehlerspeicher</strong>: K&#xFC;hlmitteltemperatursensor - Signal zu hoch</li>
+<li><strong>Istwerte</strong>: K&#xFC;hlmitteltemperatursensor <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><msup><mn>8</mn><mo>&#x2218;</mo></msup><mtext>C</mtext></mrow><annotation encoding="application/x-tex">108^\circ\text{C}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">10</span><span class="mord"><span class="mord">8</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">&#x2218;</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord">C</span></span></span></span></span></li>
+<li><strong>Ursache</strong>: Unterbrechung auf Signalleitung von K&#xFC;hlmitteltemperatursensor G62 Pin 1 nach J623 Stecker T60 Pin 38</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>NTC K&#xFC;hlmitteltemperatursensor</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="keine-leistung">keine Leistung</h3>
+
+<ul>
+<li><strong>ID</strong>: 18</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;10</li>
+<li><strong>Fahrzeug</strong>: BMW Compact E46 (Dieselmotor), 2001, Motor-Nr.: 204D4</li>
+<li><strong>Problem</strong>: keine Leistung</li>
+<li><strong>Fehlerspeicher</strong>: LMM Bank 2 Funktion fehlerhaft</li>
+<li><strong>Istwerte</strong>: Ansaugluft: i.O., Luftmasse: n.i.O.</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Signalleitung von HFM5 B6217 Pin 5 nach SG A2249 Pin 55.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Hei&#xDF;film-Luftmassenmesser HFM5 analog + Ansauglufttemperatur</li>
+<li>Bosch / Handb&#xFC;cher / Funktionsgruppen - Pr&#xFC;fung / Sollwerte + Pin-Belegung f&#xFC;r Schaltplan</li>
+<li>LMM Signal <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&#x2212;</mo><mn>5</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">1 - 5~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">5</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> und Bauteilpr&#xFC;fung Nullluftmessung <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">1~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">1</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="keine-leistung-1">Keine Leistung</h3>
+
+<ul>
+<li><strong>ID</strong>: 19</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;10</li>
+<li><strong>Fahrzeug</strong>: VW Caddy 2,0 l (Dieselmotor), 2016, Motor-Nr.: DFSD</li>
+<li><strong>Problem</strong>: Keine Leistung</li>
+<li><strong>Fehlerspeicher</strong>: LMM Signal unplausibel</li>
+<li><strong>Istwerte</strong>: Ansauglufttemperatur: nicht verf&#xFC;gbar</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Signalleitung von SG J623 Pin 22 nach Ansauglufttemperatur G70 Pin 23</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Ansauglufttemperatur</li>
+<li>Hei&#xDF;film-Luftmassenmesser HFM6 Signal digital (pr&#xFC;fbar wie Hallgeber)</li>
+<li>Nullluftmessung HFM6 Signal digital (Soll: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>76</mn><mo>&#x2212;</mo><mn>1</mn><mo separator="true">,</mo><mn>93</mn><mtext>&#xA0;kHz</mtext></mrow><annotation encoding="application/x-tex">1,76 - 1,93~\text{kHz}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">76</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">93</span><span class="mspace nobreak">&#xA0;</span><span class="mord text"><span class="mord">kHz</span></span></span></span></span>)</li>
+<li>Bosch / Handb&#xFC;cher / Funktionsgruppen - Pr&#xFC;fung / Sollwerte + Pin-Belegung f&#xFC;r Schaltplan</li>
+<li>PWM + Diodenpr&#xFC;flampe || bei Signal Leitungsbruch</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="ruckeln-beim-beschleunigen">Ruckeln beim Beschleunigen</h3>
+
+<ul>
+<li><strong>ID</strong>: 20</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;10</li>
+<li><strong>Fahrzeug</strong>: Golf 6 1,4 l (Benzinmotor), 2012, Motor-Nr.: CAXA</li>
+<li><strong>Problem</strong>: Ruckeln beim Beschleunigen</li>
+<li><strong>Fehlerspeicher</strong>: Ladedrucksensor - Signal zu hoch</li>
+<li><strong>Istwerte</strong>: Ladedruck: ver&#xE4;ndert sich nicht</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Signalleitung von Ladedrucksensor G31 Pin 4 nach SG J623 Pin 39.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Ladedrucksensor</li>
+<li>hat kein LMM verbaut</li>
+<li>Sonderfall Ladedrucksensor: Leitungsunterbrechung <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2192;</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">&#x2192;</span></span></span></span> bei einer Spannungsfallmessung auf Signalleitung (Istwert: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mtext>v</mtext></msub><mo>=</mo><mn>3</mn><mo separator="true">,</mo><mn>8</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">U_\text{v} = 3,8~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord text mtight"><span class="mord mtight">v</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">8</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>) ist kein Spannungsfall</li>
+<li>Gegentest: Durchgangspr&#xFC;fung Signalleitung (Sollwert: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mn>1</mn><mi mathvariant="normal">&#x3A9;</mi></mrow><annotation encoding="application/x-tex">&lt; 1 \Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">1&#x3A9;</span></span></span></span>)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="keine-gasannahme">Keine Gasannahme</h3>
+
+<ul>
+<li><strong>ID</strong>: 21</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;11</li>
+<li><strong>Fahrzeug</strong>: BMW 344 E36, 1997, Motor-Nr.: 164E2</li>
+<li><strong>Problem</strong>: Keine Gasannahme</li>
+<li><strong>Fehlerspeicher</strong>: Luftmengenmesser - Signal zu hoch</li>
+<li><strong>Istwerte</strong>: Luftmengenmesser: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">5~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">5</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>, Ansauglufttemperatur: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>0</mn><mo>&#x2218;</mo></msup><mtext>C</mtext></mrow><annotation encoding="application/x-tex">0^\circ\text{C}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">&#x2218;</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord">C</span></span></span></span></span></li>
+<li><strong>Ursache</strong>: Unterbrechung auf Signalleitung von SG A6000 Pin 41 nach Luftmengenmesser B6233 Pin 2. &#xDC;bergangswiderstand auf Signalleitung von SG A6000 Pin 77 und Ansauglufttemperatur B6233 Pin 4.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Luftmengenmesser + Ansauglufttemperatur</li>
+<li>Gutmann: Fahrzeuginformation / Bauteilpr&#xFC;fwerte</li>
+<li>Luftmengenmesser <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2192;</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">&#x2192;</span></span></span></span> Oszi messen (Stauscheibe bewegen)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="schlechte-leistung">Schlechte Leistung</h3>
+
+<ul>
+<li><strong>ID</strong>: 22</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;12</li>
+<li><strong>Fahrzeug</strong>: VW Caddy 2,0 l (Dieselmotor), 2016, Motor-Nr.: DFSD</li>
+<li><strong>Problem</strong>: Schlechte Leistung</li>
+<li><strong>Fehlerspeicher</strong>: Ladedruckregelventil Turbo 1 Unterbrechung</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Steuerleitung von SG J623 Stecker T60 Pin 52 nach Ladedruckregelventil N75 Pin 2.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Stellgliedtest: N75 Abgasturbolader: n.i.O.</li>
+<li>Multimeter</li>
+<li>Ladedruckregelventil</li>
+<li>Druckwandler - VTG-Lader <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2192;</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">&#x2192;</span></span></span></span> Leitschaufeln</li>
+<li>Bosch / Suche Beanstandung: &quot;schlechte Leistung&quot; / Aktor-Auswahl / Pr&#xFC;fablauf</li>
+<li>keine Sollwerte: &quot;nach Angabe&quot;</li>
+<li>Gutmann-Tester: Aktor nicht ansteuerbar &#xFC;ber Stellgliedtest (Dioden-Pr&#xFC;flampe parallel)</li>
+<li>Standmotor - Bedienteil Z&#xFC;ndung Ein + Fahrgeschwindigkeit 0 km/h stellen</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="schlechte-leistung-1">Schlechte Leistung</h3>
+
+<ul>
+<li><strong>ID</strong>: 23</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;13</li>
+<li><strong>Fahrzeug</strong>: Golf 6 1,4 l (Benzinmotor), 2012, Motor-Nr.: CAXA</li>
+<li><strong>Problem</strong>: Schlechte Leistung</li>
+<li><strong>Fehlerspeicher</strong>: Ladedruckregelventil A Funktion fehlerhaft</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: Unterbrechung Steuerleitung von SG J623 Stecker T60 Pin 3 nach Ladedruckregelventil N75 Pin 2.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Stellgliedtest: N75 Abgasturbolader: n.i.O.</li>
+<li>Multimeter</li>
+<li>Ladedruckregelventil</li>
+<li>Diodenpr&#xFC;flampe ||</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="springt-nicht-an">Springt nicht an</h3>
+
+<ul>
+<li><strong>ID</strong>: 24</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;13</li>
+<li><strong>Fahrzeug</strong>: BMW Compact E46 (Dieselmotor), 2001, Motor-Nr.: 204D4</li>
+<li><strong>Problem</strong>: Springt nicht an</li>
+<li><strong>Fehlerspeicher</strong>: Raildruckregelventil (DRV) Funktion fehlerhaft</li>
+<li><strong>Istwerte</strong>: Raildrucksensor 0 bar</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Versorgungsleitung von Raildruckregelventil B2262 Stecker X2262 Pin 1 nach Sicherung F1 (A8682) Stecker 2051</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Stellgliedtest: vom Tester nicht m&#xF6;glich <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2192;</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">&#x2192;</span></span></span></span> Signal am SG mit Oszi messen</li>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Raildruckregelventil</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="mil-an">MIL an</h3>
+
+<ul>
+<li><strong>ID</strong>: 25</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;14</li>
+<li><strong>Fahrzeug</strong>: VW Caddy 2,0 l (Dieselmotor), 2016, Motor-Nr.: DFSD</li>
+<li><strong>Problem</strong>: MIL an</li>
+<li><strong>Fehlerspeicher</strong>: Drosselklappensensor - Kurzschluss nach Plus</li>
+<li><strong>Istwerte</strong>: Drosselklappenpositionssensor: 100%</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Signalleitung von SG J623 Pin 11 nach Drosselklappenposition G69 Pin 2. Die Referenzspannung ist mit Messung 1 als i.O. zu bewerten.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Stellgliedtest: Drosselklappensteuereinheit ansteuern</li>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Drosselklappensteuereinheit</li>
+<li>Trick: Diodenpr&#xFC;flampe als Spannungsteiler ca. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo separator="true">,</mo><mn>7</mn><mtext>&#xA0;</mtext><mi>V</mi><mo>&#x2192;</mo></mrow><annotation encoding="application/x-tex">2,7~V \to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">7</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2192;</span></span></span></span> Signal muss plausibel f&#xFC;r SG sein</li>
+<li>SG Signal Soll: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo separator="true">,</mo><mn>5</mn><mo>&#x2212;</mo><mn>4</mn><mo separator="true">,</mo><mn>5</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">0,5 - 4,5~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></li>
+<li>Z&#xFC;ndung aus + Diodenpr&#xFC;flampe am SG anklemmen nach Masse + Z&#xFC;ndung an + Stellgliedtest aktivieren (raus und wieder rein)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="l%C3%A4uft-komisch-besteht-die-au-nicht-f%C3%A4ngt-an-zu-stottern-beim-warmlaufen-stecker-ab-von-lambdasonde">L&#xE4;uft komisch, besteht die AU nicht, f&#xE4;ngt an zu stottern beim Warmlaufen, Stecker ab von Lambdasonde</h3>
+
+<ul>
+<li><strong>ID</strong>: 26</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;14</li>
+<li><strong>Fahrzeug</strong>: BMW E36, 1997, Motor Nr.: 164E2</li>
+<li><strong>Problem</strong>: L&#xE4;uft komisch, besteht die AU nicht, f&#xE4;ngt an zu stottern beim Warmlaufen, Stecker ab von Lambdasonde</li>
+<li><strong>Fehlerspeicher</strong>: Lambda-Regelung au&#xDF;erhalb Bereich, Relaissondenheizung Unterbrechung</li>
+<li><strong>Istwerte</strong>: Lambdasonde 0,7 V, Lambdaintegrator 80%</li>
+<li><strong>Ursache</strong>: Unterbrechung auf Signalleitung von SG A6000 Pin 70 nach Lambdassonde Pin 2. Plusschluss auf Signalleitung steuerger&#xE4;teseitig</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Lambdasonde pr&#xFC;fen: kurze kr&#xE4;ftige Gasst&#xF6;&#xDF;e (Gashebel auf Null stellen vorher)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="springt-nicht-an-1">Springt nicht an</h3>
+
+<ul>
+<li><strong>ID</strong>: 27</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;15</li>
+<li><strong>Fahrzeug</strong>: BMW Compact E46 (Dieselmotor), 2001, Motor-Nr.: 204D4</li>
+<li><strong>Problem</strong>: Springt nicht an</li>
+<li><strong>Fehlerspeicher</strong>: Raildruck&#xFC;berwachung bei Start - Funktion fehlerhaft</li>
+<li><strong>Istwerte</strong>: Raildrucksensor 70 bar n.i.O.</li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand auf Versorgungsleitung von Raildruckregelventil B2262 Stecker Pin 1 nach Sicherung F1 (A8682) Stecker 2051. Spannungsverlust von <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">12~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">12</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Stellgliedtest: vom Tester nicht m&#xF6;glich <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2192;</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">&#x2192;</span></span></span></span> Signal am SG mit Oszi messen</li>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Raildruckregelventil</li>
+<li>Spannungsfall mit Oszi messen</li>
+<li>weil PWM-Signal</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="besteht-die-au-nicht">Besteht die AU nicht</h3>
+
+<ul>
+<li><strong>ID</strong>: 28</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;16</li>
+<li><strong>Fahrzeug</strong>: BMW 344 E36, 1997, Motor Nr.: 164E2</li>
+<li><strong>Problem</strong>: Besteht die AU nicht</li>
+<li><strong>Fehlerspeicher</strong>: Relais Sondenheizung Fehler</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: Unterbrechung der Steuerleitung von A6000 Pin 37 nach Lambdasonden-Relais Pin 4</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Stellgliedtest: n.i.O.</li>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Relais Sondenheizung</li>
+<li>Lambdasonde pr&#xFC;fen - Kurze kr&#xE4;ftige Gasst&#xF6;&#xDF;e (Gashebel auf Null stellen vorher)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="springt-manchmal-an">Springt manchmal an</h3>
+
+<ul>
+<li><strong>ID</strong>: 29</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;16</li>
+<li><strong>Fahrzeug</strong>: Golf 6 1,4 l (Benzinmotor), 2012, Motor-Nr.: CAXA</li>
+<li><strong>Problem</strong>: Springt manchmal an</li>
+<li><strong>Fehlerspeicher</strong>: Nockenwellensensor A - Signal zu hoch</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand auf Masseleitung von SG J623 nach Nockenwellen-Sensor G40</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Nockenwellensensor</li>
+<li>Fehlermeldung Signal zu hoch - Achtung: Ursache Schwellwert (ca. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mn>2</mn><mo separator="true">,</mo><mn>5</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">&lt; 2,5~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>) im SG nicht erreicht</li>
+<li>PWM</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="springt-an-und-geht-wieder-aus">Springt an und geht wieder aus</h3>
+
+<ul>
+<li><strong>ID</strong>: 30</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;16</li>
+<li><strong>Fahrzeug</strong>: VW Caddy 2,0 l (Dieselmotor), 2016, Motor-Nr.: DFSD</li>
+<li><strong>Problem</strong>: Springt an und geht wieder aus</li>
+<li><strong>Fehlerspeicher</strong>: AGR - Kurzschluss nach Masse und Kurbelwellensensor - Signal fehlt</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand auf Versorgungsleitung von SG J623 Stecker T60 PIN 58 nach den Komponenten G28, GX5, GX6, GX3. Plusschluss messen nicht durchf&#xFC;hrbar, da Stecker am Geber G28 nicht trennbar.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Kurbelwellensensor und Abgasr&#xFC;ckf&#xFC;hrung (AGR)</li>
+<li>PWM</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="leistungsprobleme-l%C3%A4uft-schlecht">Leistungsprobleme, l&#xE4;uft schlecht</h3>
+
+<ul>
+<li><strong>ID</strong>: 31</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;17</li>
+<li><strong>Fahrzeug</strong>: BMW Compact E46 (Dieselmotor), 2001, Motor-Nr.: 204D4</li>
+<li><strong>Problem</strong>: Leistungsprobleme, l&#xE4;uft schlecht</li>
+<li><strong>Fehlerspeicher</strong>: LMM Bank2 - Funktion fehlerhaft und Ansauglufttemperatur Sensor - Signal fehlerhaft</li>
+<li><strong>Istwerte</strong>: Luftmasse 1600 mg/Hub und Ansauglufttemperatur 19 &#xB0;C</li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand in Masseleitung zwischen Steuerger&#xE4;t A2249 Pin 79 und Luftmassenmesser B6217 Pin 3</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Multimeter</li>
+<li>Luftmassenmesser</li>
+<li>Pin-Belegung von LMM = HFM5 analog (Vgl. Oppermann oder Bosch)</li>
+<li>Achtung: Ein &#xDC;bergangswiderstand in der Masseleitung hebt die Signalspannung an</li>
+<li>(Signal Soll: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&#x2212;</mo><mn>5</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">1 - 5~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">5</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>) und (Ist: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>11</mn><mo separator="true">,</mo><mn>5</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">11,5~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">11</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>)</li>
+<li>Trick: Signal messen &quot;mit Stecker&quot; und &quot;ohne Stecker&quot; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2192;</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">&#x2192;</span></span></span></span> pr&#xFC;fen ob sich Signalspannung &#xE4;ndert</li>
+<li>Sichere Masse am Steuerger&#xE4;t oder Batterie minus</li>
+<li>Nullluftmessung <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">1~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">1</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="motor-l%C3%A4uft-nicht-richtig-nur-auf-3-zylinder">Motor l&#xE4;uft nicht richtig, nur auf 3 Zylinder</h3>
+
+<ul>
+<li><strong>ID</strong>: 32</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;18</li>
+<li><strong>Fahrzeug</strong>: BMW 344 E36, 1997, Motor Nr.: 164E2</li>
+<li><strong>Problem</strong>: Motor l&#xE4;uft nicht richtig, nur auf 3 Zylinder</li>
+<li><strong>Fehlerspeicher</strong>: Einspritzventil Zylinder 2 Unterbrechung</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: Steuerleitungsunterbrechung zwischen Einspritzventil 2 und Steuerger&#xE4;t</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Stellgliedtest: Einspritzventil 2 n.i.O.</li>
+<li>Einspritzventil</li>
+<li>Achtung: Fehler im Schaltplan Leitung im Steuerger&#xE4;t vertauscht zwischen Einspritzventil 2 (= Pin 3 am SG)  und 3 (= Pin 31 am SG)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="batterie-alle-drei-tage-entladen">Batterie alle drei Tage entladen</h3>
+
+<ul>
+<li><strong>ID</strong>: 33</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;19</li>
+<li><strong>Fahrzeug</strong>: Golf 6 1,4 l (Benzinmotor), 2012, Motor-Nr.: CAXA</li>
+<li><strong>Problem</strong>: Batterie alle drei Tage entladen</li>
+<li><strong>Fehlerspeicher</strong>:</li>
+<li><strong>Istwerte</strong>: Batterietest: 10,8 V i.O. und Ruhestrommessung: 40 mA i.O.</li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand in der Plusladeleitung zwischen Generator B+  und Batterie Kl. 30</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Oszi</li>
+<li>Sun VAT60 (Batteriebelastungstest)</li>
+<li>Generatortest Muster</li>
+<li>Ma&#xDF;nahmen: Z&#xFC;ndung an + Motor l&#xE4;uft + Generatordrehzahl 6000 U/min = Motordrehzahl 2000 U/min + Belastung: 120 A</li>
+<li>Sichtpr&#xFC;fung: Batteriepole fest + Masseband + Ladekontrollleuchte usw.</li>
+<li>Achtung: Oberwelligkeit i.O. aber Regulierspannung (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mn>13</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">&lt; 13~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">13</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>) n.i.O. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2192;</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">&#x2192;</span></span></span></span> dann Erregerstromkreis def.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="mal-l%C3%A4uft-der-motor-unrund">Mal l&#xE4;uft der Motor unrund</h3>
+
+<ul>
+<li><strong>ID</strong>: 34</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;19</li>
+<li><strong>Fahrzeug</strong>: BMW 344 E36, 1997, Motor Nr.: 164E2</li>
+<li><strong>Problem</strong>: Mal l&#xE4;uft der Motor unrund</li>
+<li><strong>Fehlerspeicher</strong>: Lambdaregelung - Wert/Signal au&#xDF;erhalb des Bereichs</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand zwischen ein Einspritzventil 2 und Steuerger&#xE4;t</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Bosch Universal-Oszilloskop</li>
+<li>Einspritzventil</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="springt-nicht-an-2">Springt nicht an</h3>
+
+<ul>
+<li><strong>ID</strong>: 35</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;20</li>
+<li><strong>Fahrzeug</strong>: BMW Compact E46 (Dieselmotor), 2001, Motor-Nr.: 204D4</li>
+<li><strong>Problem</strong>: Springt nicht an</li>
+<li><strong>Fehlerspeicher</strong>: Nockenwellensensor Signal fehlerhaft</li>
+<li><strong>Istwerte</strong>:</li>
+<li><strong>Ursache</strong>: Signalleitungsunterbrechung zwischen Steuerger&#xE4;t A2249 Pin 62 und Hallgeber Nockenwellensensor B6219 Pin 2. Plusschluss kann nicht nachgewiesen werden, da Stecker vom Steuerger&#xE4;t nicht trennbar.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Diodenpr&#xFC;flampe Parallel zur Signalleitung vom Steuerger&#xE4;t zum Sensor</li>
+<li>PWM-Signal (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>5</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">+5~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">5</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="mume-header" id="keine-gasannahme-1">Keine Gasannahme</h3>
+
+<ul>
+<li><strong>ID</strong>: 36</li>
+<li><strong>Uebungsnummer</strong>: &#xDC;20</li>
+<li><strong>Fahrzeug</strong>: Golf 6 1,4 l (Benzinmotor), 2012, Motor-Nr.: CAXA</li>
+<li><strong>Problem</strong>: Keine Gasannahme</li>
+<li><strong>Fehlerspeicher</strong>: Fahrpedalsensor 1 + 2 Signal zu niedrig</li>
+<li><strong>Istwerte</strong>: Fahrpedalsensor 1 + 2 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo separator="true">,</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0,0%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span></span></span></span></li>
+<li><strong>Ursache</strong>: &#xDC;bergangswiderstand auf Plusleitung zwischen G79 (Poti1) Pin 2 und Steuerger&#xE4;t J623 Pin 82. Spannungsabfall <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo separator="true">,</mo><mn>4</mn><mtext>&#xA0;</mtext><mi>V</mi></mrow><annotation encoding="application/x-tex">2,4~V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4</span><span class="mspace nobreak">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>. Signalleitungsbruch zwischen G185 (Poti2) Pin 6 und Steuerger&#xE4;t J623 Pin 61.</li>
+<li><strong>Besonderheit</strong>:
+<ul>
+<li>Cipos Fahrpedalsensor</li>
+<li>Messadapter f&#xFC;r Fahrpedal</li>
+<li>Fahrpedal bet&#xE4;tigen</li>
+</ul>
+</li>
+</ul>
+<hr>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
